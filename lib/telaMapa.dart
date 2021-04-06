@@ -1,28 +1,38 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
 
-
-
-
-class telaMapa extends StatelessWidget{
+// ignore: camel_case_types
+class telaEventoPublico extends StatelessWidget{
+telaEventoPublico(int id);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meus eventos"),
+        title: Text("Evento publico "),
       ),
-        body:  FlutterMap(
-          options: new MapOptions(
-            center: new LatLng(40.00 , -20.00), minZoom: 10.0
+        body:  Container(
+          child: Column(
+            children : <Widget>[
+            Image(
+              image : NetworkImage('https://hongkong.imd.ufrn.br/filemanagerportal/source/2020/Pr%C3%A9dio%20IMD.jpg'),
+              width: 500.0,
+            ),
+              FlatButton.icon(
+                color : Colors.redAccent,
+                icon: const Icon(Icons.android),
+                label: Text('I am a label'),
+                onPressed: () {
+                  print("foi");
+                },),
+              Text("Ola"),
+              Text("Ola"),
+              
+
+        ]
           ),
-          layers: [
-            new TileLayerOptions(
-              urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-              subdomains: ['a','b','c']
-            )
-          ],
-        )
+
+        ),
       );
   }
+
 }

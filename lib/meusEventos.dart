@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 class Evento {
@@ -19,6 +20,8 @@ class Evento {
 
 
 class meusEventos extends StatelessWidget{
+
+
 
   Future <List<Evento>> _getUsers() async {
     var data = await http.get("https://jsonplaceholder.typicode.com/users");
@@ -43,7 +46,10 @@ class meusEventos extends StatelessWidget{
             if (snapshot.data == null){
               return Container(
                   child : Center(
-                    child: Text("Carregando...."),
+                    child: SpinKitThreeBounce(
+                    color: Colors.redAccent,
+                    size: 50.0,
+                  ),
                   )
               );
             };

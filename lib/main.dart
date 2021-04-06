@@ -1,19 +1,16 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:menu_lateral/telaMapa.dart';
 import 'meusEventos.dart';
+import 'telaMapa.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:geolocator/geolocator.dart';
-
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 void main() {
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -32,32 +29,30 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
-  @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var cordenadas = "";
-  double longetude = -35.2;
-  double latitude = -5.8;
-  Future<Double> getCurrentLocation() async {
-    var position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  double longitude ;
+  double latitude ;
+  List<Marker> myMarker = [];
+  @override
+  void initState(){
+    super.initState();
+    getCurrentLocation();
+  }
+  getCurrentLocation() async {
+    final position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     setState(() {
-      cordenadas = "$position";
-      cordenadas = cordenadas.replaceAll("Lat: ", "");
-      cordenadas = cordenadas.replaceAll(" Long: ", "");
-      cordenadas.split(",");
-      latitude = double.parse(cordenadas[0]);
-      longetude = double.parse(cordenadas[1]);
-      print(cordenadas);
-      return longetude;
+      latitude = double.parse('${position.latitude}');
+      longitude = double.parse('${position.longitude}');
+      print("cords");
+      print(latitude);
+      print(longitude);
     });
   }
-
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -151,32 +146,93 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body : Container(
         child: FutureBuilder(
-            future : getCurrentLocation(),
-          // ignore: missing_return
           builder: (BuildContext context, AsyncSnapshot snapshot){
-            if (cordenadas == null){
+            if (latitude == null){
+              myMarker.add(
+                  new Marker(
+                      width: 45.0,
+                      height: 45.0,
+                      point: new LatLng(37.42,-122.08),
+                      builder: (context) => new Container(
+                          child: IconButton(
+                            icon: Icon(Icons.location_on),
+                            color: Colors.red,
+                            iconSize: 45.0,
+                            onPressed: (){
+                              print("Clicou ein 1");
+                            },
+                          )
+                      )
+                  )
+              );
+              myMarker.add(
+                  new Marker(
+                      width: 45.0,
+                      height: 45.0,
+                      point: new LatLng(37.427877,-122.090115),
+                      builder: (context) => new Container(
+                          child: IconButton(
+                            icon: Icon(Icons.location_on),
+                            color: Colors.red,
+                            iconSize: 45.0,
+                            onPressed: (){
+                              print("Clicou ein 2");
+                            },
+                          )
+                      )
+                  )
+              );
+              myMarker.add(
+                  new Marker(
+                      width: 45.0,
+                      height: 45.0,
+                      point: new LatLng(37.406555,-122.078291),
+                      builder: (context) => new Container(
+                          child: IconButton(
+                            icon: Icon(Icons.location_on),
+                            color: Colors.red,
+                            iconSize: 45.0,
+                            onPressed: (){
+                              setState (() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) => telaEventoPublico(2)));
+                              }
+                              );
+                              print("Clicou ein 3");
+                            },
+                          )
+                      )
+                  )
+              );
               return Container(
-                  child: FlatButton(
-                   onPressed: (){
-                     setState (() {
-                       Navigator.push(
-                           context,
-                           MaterialPageRoute(
-                               builder: (BuildContext context) => telaMapa()));
-                     }
-                     );
-                   },
-                   color: Colors.redAccent,
-                   child: Text("Atualizar minha localização",
-                     style: TextStyle(
-                       color: Colors.white,
-                     )),
+                  child : Center(
+                    child: SpinKitThreeBounce(
+                      color: Colors.redAccent,
+                      size: 50.0,
+                    ),
                   )
               );
             };
+            return FlutterMap(
+              options: new MapOptions(
+                  center: new LatLng(latitude , longitude),
+                  minZoom: 0.0
+              ),
+              layers: [
+                new TileLayerOptions(
+                    urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    subdomains: ['a','b','c']
+
+                ),
+
+                new MarkerLayerOptions(markers: myMarker),
+              ],
+            );
           },
         ),
-      ),
+      )
     );
   }
 
