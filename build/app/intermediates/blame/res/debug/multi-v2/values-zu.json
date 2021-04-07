@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zu/values-zu.xml",
+            "outputFile": "C:\\Flutter Projetos\\app_sextou\\sextou_jonatan\\sextou\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
             "map": [
                 {
-                    "source": "/Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/res/values-zu/values.xml",
+                    "source": "C:\\Users\\Free fire player\\.gradle\\caches\\transforms-2\\files-2.1\\7cc3f9333f4eba1e42ac0e465e10c850\\jetified-play-services-basement-17.2.1\\res\\values-zu\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "190",
+                        "endOffsets": "437"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1320",
+                        "endColumns": "190",
+                        "endOffsets": "1506"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Free fire player\\.gradle\\caches\\transforms-2\\files-2.1\\f81e9fffe318fdc5660099e12e35729e\\play-services-base-17.2.1\\res\\values-zu\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/b6252bb7f30c7dceb20e97dfa6dfae00/core-1.2.0/res/values-zu/values-zu.xml",
+                    "source": "C:\\Users\\Free fire player\\.gradle\\caches\\transforms-2\\files-2.1\\b6252bb7f30c7dceb20e97dfa6dfae00\\core-1.2.0\\res\\values-zu\\values-zu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -35,23 +52,6 @@
                         "startOffsets": "2879",
                         "endColumns": "100",
                         "endOffsets": "2975"
-                    }
-                },
-                {
-                    "source": "/Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/e8dbe66aa21a099107d9e12c1d3550e1/jetified-play-services-basement-17.2.1/res/values-zu/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "190",
-                        "endOffsets": "437"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1320",
-                        "endColumns": "190",
-                        "endOffsets": "1506"
                     }
                 }
             ]

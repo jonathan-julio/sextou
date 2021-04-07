@@ -12,43 +12,43 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:9:5-66
-14-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:9:22-64
+14-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:9:5-66
+14-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:9:22-64
 15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-15-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:10:5-79
-15-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:10:22-76
+15-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:10:5-79
+15-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:10:22-76
 16    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-16-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:11:5-81
-16-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:11:22-78
+16-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:11:5-81
+16-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:11:22-78
 17    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-17-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:12:5-85
-17-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:12:22-82
+17-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:12:5-85
+17-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:12:22-82
 18
 19    <application
-19-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:15:5-53:19
+19-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:15:5-53:19
 20        android:name="io.flutter.app.FlutterApplication"
-20-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:16:9-57
+20-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:16:9-57
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.2.0] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/b6252bb7f30c7dceb20e97dfa6dfae00/core-1.2.0/AndroidManifest.xml:24:18-86
+21-->[androidx.core:core:1.2.0] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\b6252bb7f30c7dceb20e97dfa6dfae00\core-1.2.0\AndroidManifest.xml:24:18-86
 22        android:debuggable="true"
 23        android:icon="@mipmap/ic_launcher"
-23-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:18:9-43
+23-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:18:9-43
 24        android:label="menu_lateral" >
-24-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:17:9-37
+24-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:17:9-37
 25        <activity
-25-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:19:9-47:20
+25-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:19:9-47:20
 26            android:name="com.example.menu_lateral.MainActivity"
-26-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:20:13-41
+26-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:20:13-41
 27            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-27-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:23:13-163
+27-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:23:13-163
 28            android:hardwareAccelerated="true"
-28-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:24:13-47
+28-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:24:13-47
 29            android:launchMode="singleTop"
-29-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:21:13-43
+29-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:21:13-43
 30            android:theme="@style/LaunchTheme"
-30-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:22:13-47
+30-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:22:13-47
 31            android:windowSoftInputMode="adjustResize" >
-31-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:25:13-55
+31-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:25:13-55
 32
 33            <!--
 34                 Specifies an Android theme to apply to this Activity as soon as
@@ -57,11 +57,11 @@
 37                 to determine the Window background behind the Flutter UI.
 38            -->
 39            <meta-data
-39-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:30:13-33:17
+39-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:30:13-33:17
 40                android:name="io.flutter.embedding.android.NormalTheme"
-40-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:31:15-70
+40-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:31:15-70
 41                android:resource="@style/NormalTheme" />
-41-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:32:15-52
+41-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:32:15-52
 42            <!--
 43                 Displays an Android View that continues showing the launch screen
 44                 Drawable until Flutter paints its first frame, then this splash
@@ -70,21 +70,21 @@
 47                 Flutter's first frame.
 48            -->
 49            <meta-data
-49-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:39:13-42:17
+49-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:39:13-42:17
 50                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-50-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:40:15-79
+50-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:40:15-79
 51                android:resource="@drawable/launch_background" />
-51-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:41:15-61
+51-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:41:15-61
 52
 53            <intent-filter>
-53-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:43:13-46:29
+53-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:43:13-46:29
 54                <action android:name="android.intent.action.MAIN" />
-54-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:44:17-68
-54-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:44:25-66
+54-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:44:17-68
+54-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:44:25-66
 55
 56                <category android:name="android.intent.category.LAUNCHER" />
-56-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:45:17-76
-56-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:45:27-74
+56-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:45:17-76
+56-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:45:27-74
 57            </intent-filter>
 58        </activity>
 59        <!--
@@ -92,27 +92,27 @@
 61             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 62        -->
 63        <meta-data
-63-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:50:9-52:33
+63-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:50:9-52:33
 64            android:name="flutterEmbedding"
-64-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:51:13-44
+64-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:51:13-44
 65            android:value="2" />
-65-->/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/android/app/src/main/AndroidManifest.xml:52:13-30
+65-->C:\Flutter Projetos\app_sextou\sextou_jonatan\sextou\android\app\src\main\AndroidManifest.xml:52:13-30
 66
 67        <activity
-67-->[com.google.android.gms:play-services-base:17.2.1] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/AndroidManifest.xml:23:9-26:75
+67-->[com.google.android.gms:play-services-base:17.2.1] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\f81e9fffe318fdc5660099e12e35729e\play-services-base-17.2.1\AndroidManifest.xml:23:9-26:75
 68            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-68-->[com.google.android.gms:play-services-base:17.2.1] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/AndroidManifest.xml:24:13-79
+68-->[com.google.android.gms:play-services-base:17.2.1] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\f81e9fffe318fdc5660099e12e35729e\play-services-base-17.2.1\AndroidManifest.xml:24:13-79
 69            android:exported="false"
-69-->[com.google.android.gms:play-services-base:17.2.1] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/AndroidManifest.xml:25:13-37
+69-->[com.google.android.gms:play-services-base:17.2.1] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\f81e9fffe318fdc5660099e12e35729e\play-services-base-17.2.1\AndroidManifest.xml:25:13-37
 70            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-70-->[com.google.android.gms:play-services-base:17.2.1] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/AndroidManifest.xml:26:13-72
+70-->[com.google.android.gms:play-services-base:17.2.1] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\f81e9fffe318fdc5660099e12e35729e\play-services-base-17.2.1\AndroidManifest.xml:26:13-72
 71
 72        <meta-data
-72-->[com.google.android.gms:play-services-basement:17.2.1] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/e8dbe66aa21a099107d9e12c1d3550e1/jetified-play-services-basement-17.2.1/AndroidManifest.xml:23:9-25:69
+72-->[com.google.android.gms:play-services-basement:17.2.1] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\7cc3f9333f4eba1e42ac0e465e10c850\jetified-play-services-basement-17.2.1\AndroidManifest.xml:23:9-25:69
 73            android:name="com.google.android.gms.version"
-73-->[com.google.android.gms:play-services-basement:17.2.1] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/e8dbe66aa21a099107d9e12c1d3550e1/jetified-play-services-basement-17.2.1/AndroidManifest.xml:24:13-58
+73-->[com.google.android.gms:play-services-basement:17.2.1] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\7cc3f9333f4eba1e42ac0e465e10c850\jetified-play-services-basement-17.2.1\AndroidManifest.xml:24:13-58
 74            android:value="@integer/google_play_services_version" />
-74-->[com.google.android.gms:play-services-basement:17.2.1] /Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/e8dbe66aa21a099107d9e12c1d3550e1/jetified-play-services-basement-17.2.1/AndroidManifest.xml:25:13-66
+74-->[com.google.android.gms:play-services-basement:17.2.1] C:\Users\Free fire player\.gradle\caches\transforms-2\files-2.1\7cc3f9333f4eba1e42ac0e465e10c850\jetified-play-services-basement-17.2.1\AndroidManifest.xml:25:13-66
 75    </application>
 76
 77</manifest>

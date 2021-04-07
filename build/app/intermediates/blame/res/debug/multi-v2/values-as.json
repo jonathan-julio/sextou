@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jonathanjulio/AndroidStudioProjects/menu_lateral/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-as/values-as.xml",
+            "outputFile": "C:\\Flutter Projetos\\app_sextou\\sextou_jonatan\\sextou\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
             "map": [
                 {
-                    "source": "/Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/b6252bb7f30c7dceb20e97dfa6dfae00/core-1.2.0/res/values-as/values-as.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "2719",
-                        "endColumns": "100",
-                        "endOffsets": "2815"
-                    }
-                },
-                {
-                    "source": "/Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/e8dbe66aa21a099107d9e12c1d3550e1/jetified-play-services-basement-17.2.1/res/values-as/values.xml",
+                    "source": "C:\\Users\\Free fire player\\.gradle\\caches\\transforms-2\\files-2.1\\7cc3f9333f4eba1e42ac0e465e10c850\\jetified-play-services-basement-17.2.1\\res\\values-as\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/jonathanjulio/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/res/values-as/values.xml",
+                    "source": "C:\\Users\\Free fire player\\.gradle\\caches\\transforms-2\\files-2.1\\f81e9fffe318fdc5660099e12e35729e\\play-services-base-17.2.1\\res\\values-as\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -52,6 +35,23 @@
                         "startOffsets": "105,215,400,525,637,826,950,1093,1420,1622,1733,1914,2041,2233,2417,2507,2603",
                         "endColumns": "109,184,124,111,188,123,142,141,201,110,180,126,191,183,89,95,115",
                         "endOffsets": "210,395,520,632,821,945,1088,1230,1617,1728,1909,2036,2228,2412,2502,2598,2714"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Free fire player\\.gradle\\caches\\transforms-2\\files-2.1\\b6252bb7f30c7dceb20e97dfa6dfae00\\core-1.2.0\\res\\values-as\\values-as.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "2719",
+                        "endColumns": "100",
+                        "endOffsets": "2815"
                     }
                 }
             ]
