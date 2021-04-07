@@ -24,8 +24,7 @@ telaEventoPublico(int id);
                 onPressed: () {
                   print("foi");
                 },),
-              Text("Ola"),
-              Text("Ola"),
+              Text("Informações do evento aqui"),
               
 
         ]

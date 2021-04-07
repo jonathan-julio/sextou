@@ -226,7 +226,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     subdomains: ['a','b','c']
 
                 ),
-
                 new MarkerLayerOptions(markers: myMarker),
               ],
             );
