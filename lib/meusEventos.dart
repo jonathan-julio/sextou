@@ -21,8 +21,6 @@ class Evento {
 
 class meusEventos extends StatelessWidget{
 
-
-
   Future <List<Evento>> _getUsers() async {
     var data = await http.get("https://jsonplaceholder.typicode.com/users");
     var jsonData = json.decode(data.body);
@@ -37,6 +35,7 @@ class meusEventos extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Meus eventos"),
       ),
       body : Container(
