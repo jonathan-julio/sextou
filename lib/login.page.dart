@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:menu_lateral/register.page.dart';
+import 'registerPage.dart';
 import 'package:http/http.dart' as http;
 
 import 'main.dart';
@@ -104,11 +104,11 @@ class LoginPage extends StatelessWidget {
                   onPressed: () async {
                     try {
                       await loginUser(email, password);
-                      Navigator.push(
+                      /*Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  MyHomePage(title: "sextou")));
+                                  MyHomePage(title: "sextou")));*/
                     } catch (error) {
                       print(error);
                     }
