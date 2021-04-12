@@ -47,9 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       latitude = double.parse('${position.latitude}');
       longitude = double.parse('${position.longitude}');
-      print("cords");
-      print(latitude);
-      print(longitude);
     });
   }
 
