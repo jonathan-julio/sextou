@@ -1,31 +1,47 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:sextou_app/telaVotarEvento.dart';
+import 'loginPage.dart';
 import 'telaAddEvento.dart';
 import 'meusEventos.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:http/http.dart' as http;
+
 
 
 
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
+  final String id;
+  final String name;
+  final String email;
+  final String senha;
+  const MyHomePage({Key key, this.title , this.id, this.name, this.email , this.senha}) : super(key: key);
   _MyHomePageState createState() => _MyHomePageState();
-}
 
+}
+class Evento {
+  String _id;
+  String latitude;
+  String longitude;
+  Evento(String id ,String latitude, String longitude, ) {
+    this._id = id;
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
+}
 class _MyHomePageState extends State<MyHomePage> {
   double longitude;
   double latitude;
   List<Marker> myMarker = [];
-  @override
-  void initState() {
-    super.initState();
-    getCurrentLocation();
-  }
-
+  List<Evento> eventos = [];
+  var eventoJson;
   getCurrentLocation() async {
     final position = await Geolocator
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
@@ -33,11 +49,32 @@ class _MyHomePageState extends State<MyHomePage> {
       latitude = double.parse('${position.latitude}');
       longitude = double.parse('${position.longitude}');
     });
+    print(position.toString());
+  }
+
+  void getAllEvents() async {
+    var response = await http.get(
+        Uri.parse("https://8a9bacc5a169.ngrok.io/api/v1/evento"));
+    if (response.statusCode == 200) {
+      eventoJson = json.decode(response.body);
+      setState(() {
+        for (var u in eventoJson){
+          eventos.add(new Evento(u['_id'], u['latitude1'].toString(), u['longitude1'].toString()));
+        }
+      });
+    } else {
+      throw Exception(json.decode(response.body)['mesage']);
+    }
+  }
+  void initState() {
+    super.initState();
+    getAllEvents();
+    getCurrentLocation();
+    //getId(widget.name, widget.senha);
   }
 
   @override
   Widget build(BuildContext context) {
-    String query;
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -65,12 +102,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       Text(
-                        "Mc Poze", // Nomeusuario
+                        widget.name, // Nomeusuario
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.onPrimary),
                       ),
                       Text(
-                        "mcpoze@mopaz.com", // Emailsuario
+                        widget.email, // Emailsuario
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.onPrimary),
                       ),
@@ -88,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (BuildContext context) => meusEventos()));
+                            builder: (BuildContext context) => meusEventos(id : widget.id)));
                   });
                 },
               ),
@@ -102,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (BuildContext context) => addEventos()));
+                            builder: (BuildContext context) => addEventos(id : widget.id)));
                   });
                 },
               ),
@@ -125,7 +162,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text("Logout",
                     style: new TextStyle(
                         fontWeight: FontWeight.normal, fontSize: 20.0)),
-                onTap: () {},
+                onTap: () {
+                  home: LoginPage();
+                },
               ),
             ],
           ),
@@ -157,59 +196,42 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Colors.red,
                           iconSize: 45.0,
                           onPressed: () {
+                              for (var u in eventos) {
+                                print(u.latitude);
+                              }
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MyHomePage(title: "sextouu",id : widget.id, name: widget.name,
+                                              email : widget.email, senha : widget.senha)));
                             print("Clicou ein 2");
                           },
                         ))));
                 myMarker.add(new Marker(
-                    width: 80.0,
-                    height: 80.0,
+                    width: 45.0,
+                    height: 45.0,
                     point: new LatLng(37.406555, -122.078291),
                     builder: (context) => new Container(
                             child: IconButton(
-                          icon: Icon(Icons.location_on),
-                          color: Colors.red,
-                          iconSize: 45.0,
-                          onPressed: () {
-                              showModalBottomSheet(
-                                backgroundColor: Colors.transparent,
-                                context: context,
-                                builder: (context) {
-
-                                  return Container(
-                                    padding: EdgeInsets.all(10),
-                                    height: MediaQuery.of(context).size.height*1,
-                                    width: double.infinity,
-                                    color: Colors.transparent,
-                                    child: Container(
-                                        decoration: new BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: const Radius.circular(40.0),
-                                              topRight: const Radius.circular(40.0),
-                                            )),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Text("Hu"),
-                                            MaterialApp(
-                                              title: 'Search Widget',
-                                              theme: ThemeData(
-                                                primarySwatch: Colors.blueGrey,
-                                              )),
-                                            ],
-                                          )),
-                                  );
+                              icon: Icon(Icons.location_on),
+                              color: Colors.red,
+                              iconSize: 45.0,
+                                onPressed: () {
+                                  setState(() {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) => meuEvento(context, widget.id)));
+                                  });
                                 },
-                              );
-
-                            print("Clicou ein 3");
-                          },
-                        ))));
+                             ))));
                 return Container(
                     child: Center(
-                  child: SpinKitThreeBounce(
-                    color: Colors.redAccent,
-                    size: 50.0,
-                  ),
+                      child: SpinKitThreeBounce(
+                        color: Colors.redAccent,
+                        size: 50.0,
+                      ),
                 ));
               }
               return FlutterMap(

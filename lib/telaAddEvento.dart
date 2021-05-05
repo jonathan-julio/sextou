@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:search_map_place/search_map_place.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:circular_check_box/circular_check_box.dart';
+import 'package:sextou_app/telaInicial.dart';
 
 class newAddress {
   String address;
@@ -15,45 +18,74 @@ class newAddress {
   }
 }
 
-class newEvent {
-  String nome;
+class Evento {
+  String name;
+  String sobre;
   newAddress address1;
   newAddress address2;
   DateTime data1;
   DateTime data2;
+  DateTime dataVotacao;
   TimeOfDay hora1;
   TimeOfDay hora2;
-  File imagem;
-  String description;
-  newEvent(String nome, newAddress address1, newAddress address2, DateTime data1,
-      DateTime data2, TimeOfDay hora1, TimeOfDay hora2, File imagem, String description) {
-    this.nome = nome;
+  bool privacidade;
+  Evento(String nome, newAddress address1, newAddress address2, DateTime data1,
+      DateTime data2, DateTime dataVotacao , TimeOfDay hora1, TimeOfDay hora2, String description, bool privacidade ) {
+    this.name = nome;
     this.address1 = address1;
     this.address2 = address2;
     this.data1 = data1;
     this.data2 = data2;
+    this.dataVotacao = dataVotacao;
     this.hora1 = hora1;
     this.hora2 = hora2;
-    this.imagem = imagem;
-    this.description = description;
-  }
-  printEvent() {
-    print('{'+ "\n" +
-    '"nome" : "${this.nome},"'+ "\n" +
-    '"address1" : { "rua" : "${this.address1.address},"latitude" : "${this.address1.latitude},"longitude" : "${this.address1.longitude}, },"'+ "\n" +
-    '"address2" : { "rua" : "${this.address2.address},"latitude" : "${this.address2.latitude},"longitude" : "${this.address2.longitude}, },"'+ "\n" +
-    '"data1" : "${this.data1..toString().replaceAll('DateTime(', '').replaceAll(')', '')}","'+ "\n" +
-    '"data2" : "${this.data2..toString().replaceAll('DateTime(', '').replaceAll(')', '')}","'+ "\n" +
-    '"hora1" : "${this.hora1..toString().replaceAll('TimeOfDay(', '').replaceAll(')', '')}","'+ "\n" +
-    '"hora2" : "${this.hora2..toString().replaceAll('TimeOfDay(', '').replaceAll(')', '')}","'+ "\n" +
-    '"description" : "${this.description},"'+ "\n" +
-    '}');
+    this.sobre = description;
+    this.dataVotacao = dataVotacao;
+    this.privacidade = privacidade;
   }
 }
 
+
 class addEventos extends StatefulWidget{
   @override
+  final String id;
+  const addEventos({Key key, this.id}) : super(key: key);
   _addEventos createState() => _addEventos();
+}
+Future<bool> postEvento(Evento evento, String myId) async {
+  var response = await http.post(
+      Uri.parse("https://8a9bacc5a169.ngrok.io/api/v1/evento"),
+      body: {
+        'name' : "${evento.name}",
+        'sobre' : "${evento.sobre}",
+        'address1' : "${evento.address1.address}",
+        'latitude1' : "${evento.address1.latitude}",
+        'longitude1' : "${evento.address1.longitude}",
+        'address2' : "${evento.address2.address}",
+        'latitude2' : "${evento.address2.latitude}",
+        'longitude2' : "${evento.address2.longitude}",
+        'data1' : "${evento.data1.toString().replaceAll(' 00:00:00.000', '')}",
+        'data2' : "${evento.data2.toString().replaceAll(' 00:00:00.000', '')}",
+        'dataVotacao' : "${evento.dataVotacao}",
+        'hora1' : " ${evento.hora1.toString().replaceAll('TimeOfDay(', '')
+            .replaceAll(')', '')}",
+        'hora2' : "${evento.hora2.toString().replaceAll('TimeOfDay(', '')
+            .replaceAll(')', '')}",
+        'publico' : "${evento.privacidade}"
+      });
+  print(response.statusCode);
+  if (response.statusCode == 200) {
+    var addEvento = await http.post(
+        Uri.parse("https://8a9bacc5a169.ngrok.io/api/v1/add-meu-evento"),
+        body: {
+          'id' : "${myId}",
+          'idEvento' : "${response.body}"
+        });
+    return true;
+  } else {
+    print(response.body);
+    throw Exception(json.decode(response.body)['mesage']);
+  }
 }
 // ignore: camel_case_types
 class _addEventos extends State<addEventos> {
@@ -68,10 +100,10 @@ class _addEventos extends State<addEventos> {
   DateTime dataVotacao;
   TimeOfDay hora1;
   TimeOfDay hora2;
-  bool _value = false;
+  bool privacidade = false;
 
   //we omitted the brackets '{}' and are using fat arrow '=>' instead, this is dart syntax
-  void _valueChanged(bool value) => setState(() => _value = value);
+  void _valueChanged(bool value) => setState(() => privacidade = value);
 
   @override
   void initState(){
@@ -104,7 +136,8 @@ class _addEventos extends State<addEventos> {
                 Container(
                   padding: EdgeInsets.fromLTRB(30.0, 30.0, 0.0, 10.0),
                   color: Colors.red,
-                  child : Text("Criar evento", style: TextStyle(fontSize: 25, color: Colors.white),),
+                  child : Text("Criar evento", style: TextStyle(fontSize: 25,
+                      color: Colors.white),),
                 )
               ]
           ),
@@ -139,7 +172,6 @@ class _addEventos extends State<addEventos> {
               ),
             ),
             Container(
-              height: 52,
               padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
               child: SearchMapPlaceWidget(
                 apiKey :'AIzaSyCi7Bm7jDmmY9APxb-p25B7mFZydRbUsFc',
@@ -147,7 +179,8 @@ class _addEventos extends State<addEventos> {
                 placeholder: "1º endereço *",
                 onSelected: (Place place) async {
                   Geolocation geolocation = await place.geolocation;
-                  String cordernadas = geolocation.coordinates.toString().replaceAll('LatLng(', '').replaceAll(')', '');
+                  String cordernadas = geolocation.coordinates.toString()
+                      .replaceAll('LatLng(', '').replaceAll(')', '');
                   var cordernadasList = cordernadas.split(",");
                   address1 = newAddress(place.description.toString(),
                       double.parse(cordernadasList[0]),
@@ -159,7 +192,6 @@ class _addEventos extends State<addEventos> {
               height: 5,
             ),
             Container(
-              height: 52,
               padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
               child: SearchMapPlaceWidget(
                 apiKey :'AIzaSyCi7Bm7jDmmY9APxb-p25B7mFZydRbUsFc',
@@ -167,7 +199,8 @@ class _addEventos extends State<addEventos> {
                 placeholder: "2º endereço",
                 onSelected: (Place place) async {
                   Geolocation geolocation = await place.geolocation;
-                  String cordernadas = geolocation.coordinates.toString().replaceAll('LatLng(', '').replaceAll(')', '');
+                  String cordernadas = geolocation.coordinates.toString()
+                      .replaceAll('LatLng(', '').replaceAll(')', '');
                   var cordernadasList = cordernadas.split(",");
                   address2 = newAddress(place.description.toString(),
                       double.parse(cordernadasList[0]),
@@ -188,15 +221,22 @@ class _addEventos extends State<addEventos> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget> [
-                        Text("Opções de datas", style: TextStyle(fontSize: 12, color: Colors.black)),
+                        Text("Opções de datas", style: TextStyle(fontSize: 12,
+                            color: Colors.black)),
                         ListTile(
-                          title: Text("* ${_dataFormat(data1)}", style: TextStyle(fontSize: 12, color: Colors.redAccent),),
-                          trailing: Icon(Icons.calendar_today_outlined,size: 15.0),
+                          title: Text("* ${_dataFormat(data1)}",
+                            style: TextStyle(fontSize: 12,
+                                color: Colors.redAccent),),
+                          trailing: Icon(Icons.calendar_today_outlined,
+                              size: 15.0),
                           onTap: _pickDate,
                         ),
                         ListTile(
-                          title: Text("${_dataFormat(data2)}",style: TextStyle(fontSize: 12, color: Colors.redAccent)),
-                          trailing: Icon(Icons.calendar_today_outlined,size: 15.0),
+                          title: Text("${_dataFormat(data2)}",
+                              style: TextStyle(fontSize: 12,
+                                  color: Colors.redAccent)),
+                          trailing: Icon(Icons.calendar_today_outlined,
+                              size: 15.0),
                           onTap: _pickDate2,
                         )
                       ],
@@ -210,14 +250,19 @@ class _addEventos extends State<addEventos> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget> [
-                          Text("Opções de horas", style: TextStyle(fontSize: 12, color: Colors.black)),
+                          Text("Opções de horas", style: TextStyle(
+                              fontSize: 12, color: Colors.black)),
                           ListTile(
-                            title: Text("* ${_timeFormat(hora1)}", style: TextStyle(fontSize: 12, color: Colors.redAccent)),
+                            title: Text("* ${_timeFormat(hora1)}",
+                                style: TextStyle(fontSize: 12,
+                                    color: Colors.redAccent)),
                             trailing: Icon(Icons.access_time, size: 20.0),
                             onTap: _pickTime1,
                           ),
                           ListTile(
-                            title: Text("${_timeFormat(hora2)}", style: TextStyle(fontSize: 12, color: Colors.redAccent)),
+                            title: Text("${_timeFormat(hora2)}",
+                                style: TextStyle(fontSize: 12,
+                                    color: Colors.redAccent)),
                             trailing: Icon(Icons.access_time,size: 20.0),
                             onTap: _pickTime2,
                           )
@@ -239,10 +284,14 @@ class _addEventos extends State<addEventos> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget> [
-                            Text("Encerrar votação",style: TextStyle(fontSize: 12, color: Colors.black)),
+                            Text("Encerrar votação",style: TextStyle(
+                                fontSize: 12, color: Colors.black)),
                             ListTile(
-                              title: Text("* ${_dataFormat(dataVotacao)}", style: TextStyle(fontSize: 12, color: Colors.redAccent),),
-                              trailing: Icon(Icons.calendar_today_outlined,size: 15.0),
+                              title: Text("* ${_dataFormat(dataVotacao)}",
+                                style: TextStyle(fontSize: 12,
+                                    color: Colors.redAccent),),
+                              trailing: Icon(Icons.calendar_today_outlined,
+                                  size: 15.0),
                               onTap: _pickDate3,
                             ),
                           ],
@@ -256,11 +305,19 @@ class _addEventos extends State<addEventos> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget> [
-                            Text("Privacidade",style: TextStyle(fontSize: 12, color: Colors.black)),
+                            Text("Privacidade",style: TextStyle(fontSize: 12,
+                                color: Colors.black)),
                             ListTile(
                               title: Text("Publico"),
-                              leading: CircularCheckBox(value: this._value, checkColor: Colors.white  ,activeColor: Colors.green, inactiveColor: Colors.redAccent, disabledColor: Colors.grey , onChanged: (val) => this.setState(() { this._value= !this._value ;}) ),
-                              onTap: ()=> this.setState(() { this._value= !this._value ;}),
+                              leading: CircularCheckBox(value: this.privacidade,
+                                  checkColor: Colors.white  ,
+                                  activeColor: Colors.green,
+                                  inactiveColor: Colors.redAccent,
+                                  disabledColor: Colors.grey ,
+                                  onChanged: (val) => this.setState(() {
+                                    this.privacidade= !this.privacidade ;}) ),
+                              onTap: ()=> this.setState(() {
+                                this.privacidade= !this.privacidade ;}),
                             ),
                           ],
                         ),
@@ -275,7 +332,8 @@ class _addEventos extends State<addEventos> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(15.0, 0.0, 10.0, 0.0),
-              child: Text("Adicionar imagem *", style  : TextStyle(color: Colors.redAccent) )
+              child: Text("Adicionar imagem *", style  : TextStyle(
+                  color: Colors.redAccent) )
             ),
             SizedBox(
               height: 5,
@@ -290,7 +348,8 @@ class _addEventos extends State<addEventos> {
                     ),
                     color: Colors.grey,
                     child: Container(
-                      child: Text("Selecionar imagem", style: TextStyle(color: Colors.white),),
+                      child: Text("Selecionar imagem", style: TextStyle(
+                          color: Colors.white),),
                     ),
                     onPressed : (){
                       pegarImagemGaleria();
@@ -315,17 +374,27 @@ class _addEventos extends State<addEventos> {
               child: RaisedButton(
                   color: Colors.green,
                   child: Container(
-                    child: Text("      Criar evento      ", style: TextStyle(color: Colors.white, ),),
+                    child: Text("      Criar evento      ", style: TextStyle(
+                      color: Colors.white, ),),
                   ),
-                  onPressed : (){
-                    if (address1 == null || eventName == "" || imagem == null || description.text == null){
+                  onPressed : () async {
+                    // ignore: unrelated_type_equality_checks
+                    if (address1 == null || eventName == "" ||
+                        imagem == null || description.text == null){
                       showAlertDialog1(context);
                     }else {
-                      newEvent evento = new newEvent(eventName.text, address1, address2, data1, data2, hora1, hora2, imagem, description.text);
-                      evento.printEvent();
+                      Evento evento = new Evento(
+                          eventName.text, address1, address2, data1, data2,
+                          dataVotacao, hora1, hora2, description.text ,
+                          privacidade);
+                      try {
+                        await postEvento(evento, widget.id);
+                        Navigator.of(context).pop();
+                      } catch (error) {
+                        print("erro aqui");
+                        print(error);
+                      }
                     }
-                    print(description.text);
-                    print(eventName.text);
                   }),
             )
           ],
@@ -341,7 +410,8 @@ class _addEventos extends State<addEventos> {
   }
   String _timeFormat(TimeOfDay time)  {
     if (time != null){
-      return "Hora: ${time.toString().replaceAll('TimeOfDay(', '').replaceAll(')', '')}";
+      return "Hora: ${
+          time.toString().replaceAll('TimeOfDay(', '').replaceAll(')', '')}";
     }else{
       return "Hora: __:__";
     }

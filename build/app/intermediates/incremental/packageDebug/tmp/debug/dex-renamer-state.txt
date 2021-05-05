@@ -1,4 +1,4 @@
-#Wed Apr 07 14:05:54 BRT 2021
-base.0=C\:\\Flutter Projetos\\app_sextou\\sextou_jonatan\\sextou\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Wed May 05 10:49:06 BRT 2021
+base.0=/Users/jonathanjulio/AndroidStudioProjects/sextou_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

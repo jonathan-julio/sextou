@@ -1,6 +1,10 @@
-# menu_lateral
+# sextou_app
 
 A new Flutter application.
+
+aplicativo criado por jonathan julio
+
+backend como mongoDB
 
 ## Getting Started
 

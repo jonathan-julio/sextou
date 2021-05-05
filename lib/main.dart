@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'telaInicial.dart';
+import 'package:sextou_app/telaInicial.dart';
+import 'loginPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(),
+      home: LoginPage(),
     );
   }
 }

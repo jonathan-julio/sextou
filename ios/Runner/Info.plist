@@ -2,17 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app needs access to location when open.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This app needs access to location when in the background.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Sextou precisa acessar sua galeria para adicionar uma foto ao evento.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Sextou precisa usar sua camera para adicionar uma foto ao evento.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Isso nao sera nescessario.</string>
-	
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>This app needs access to location when open.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>This app needs access to location when in the background.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Sextou precisa acessar sua galeria para adicionar uma foto ao evento.</string>
+<key>NSCameraUsageDescription</key>
+<string>Sextou precisa usar sua camera para adicionar uma foto ao evento.</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Isso nao sera nescessario.</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -22,7 +22,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>menu_lateral</string>
+	<string>sextou_app</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

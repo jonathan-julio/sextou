@@ -6,11 +6,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 class Evento {
-  int id;
+  String id;
   String nome;
   String email;
   String local;
-  Evento(int id, String nome, String email, String local) {
+  Evento(String id, String nome, String email, String local) {
     this.id = id;
     this.nome = nome;
     this.email = email;
@@ -20,13 +20,16 @@ class Evento {
 
 
 class meusEventos extends StatelessWidget{
+  final String id;
+  const meusEventos({Key key, this.id}) : super(key: key);
 
   Future <List<Evento>> _getUsers() async {
-    var data = await http.get("https://jsonplaceholder.typicode.com/users");
+    var data = await http.get("https://8a9bacc5a169.ngrok.io/api/v1/meus-eventos/${id}");
     var jsonData = json.decode(data.body);
     List<Evento> eventos = [];
     for (var u in jsonData){
-      Evento user = Evento(u['id'], u['name'], u['email'],  u['address']['geo']['lat'] + "," +u['address']['geo']['lng']);
+      //print(u[0]);
+      Evento user = Evento(u[0]['_id'], u[0]['name'], u[0]['sobre'],  u[0]['address1']);
       eventos.add(user);
     }
     return eventos;
@@ -52,8 +55,9 @@ class meusEventos extends StatelessWidget{
                   )
               );
             };
+            print(snapshot);
             return ListView.builder(
-                itemExtent: 70.0,
+                itemExtent: 90.0,
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index){
                   return Card(child: ListTile(
@@ -63,8 +67,8 @@ class meusEventos extends StatelessWidget{
                       width: 70.0,
                     ),
                     title: Text(snapshot.data[index].nome),
-                    subtitle:  Text(snapshot.data[index].email + "\n" + snapshot.data[index].local),
-                      trailing : Icon(Icons.arrow_forward_ios, size: 15.0),
+                    subtitle:  Text( "${snapshot.data[index].email} \n ${snapshot.data[index].local}" ),
+                      trailing : Icon(Icons.more_vert , size: 40.0),
                         onTap: (){
                         Navigator.push(
                         context,
